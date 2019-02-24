@@ -8,9 +8,14 @@ export class BaseEntity {
     this.speed = 1
     this.w = 20
     this.h = 20
+    this.shouldDraw = true
   }
 
-  draw = () => {
+  draw() {
+    if (!this.shouldDraw) {
+      return
+    }
+
     this.x = move({
       speed: this.speed,
       curr: this.x,
@@ -23,10 +28,11 @@ export class BaseEntity {
       dest: this.destination[1]
     })
 
+    this.c.fillStyle = "black"
     this.c.fillRect(this.x, this.y, this.w, this.h)
   }
 
-  move = (x, y) => {
+  move(x, y) {
     this.destination = [x, y]
   }
 }

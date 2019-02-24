@@ -1,4 +1,4 @@
-import { BaseEntity } from "./BaseEntity.mjs"
+import Shooters from "./Shooters.mjs"
 import getEntityClicked from "./getEntityClicked.mjs"
 
 const canvas = document.querySelector("canvas")
@@ -13,13 +13,13 @@ let selectedEntity
 const context = canvas.getContext("2d")
 
 let entities = [
-  new BaseEntity({
+  new Shooters({
     context,
     id: "Robot1",
     x: 0,
     y: 0
   }),
-  new BaseEntity({
+  new Shooters({
     context,
     id: "Robot2",
     x: 50,
@@ -31,6 +31,9 @@ window.addEventListener("click", event => {
   const clickEvent = {
     entity: getEntityClicked({ entities, event })
   }
+  // if clickEvent.entity is a target
+  if (selectedEntity && clickEvent.entity)
+    return selectedEntity.attack(clickEvent.entity)
 
   // change Selected entity
   selectedEntity = clickEvent.entity || selectedEntity
