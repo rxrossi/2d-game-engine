@@ -13,11 +13,10 @@ export default class Shooter extends BaseEntity {
   }
 
   attack(target) {
-    target.takeDamage(this.damage)
+    if (target.id !== this.id) target.takeDamage(this.damage)
   }
 
   draw() {
-    console.log("aaa")
     super.draw()
     const healthBarW = (this.w / this.maxHealth) * this.health
     this.c.fillStyle = "red"
