@@ -22,8 +22,8 @@ let entities = [
   new Shooters({
     context,
     id: "Robot2",
-    x: 50,
-    y: 50
+    x: 500,
+    y: 500
   })
 ]
 
