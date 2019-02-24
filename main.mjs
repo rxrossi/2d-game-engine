@@ -27,6 +27,12 @@ let entities = [
   })
 ]
 
+window.addEventListener("contextmenu", event => {
+  event.preventDefault()
+  selectedEntity = null
+  selectedEntityDisplay.textContent = selectedEntity && selectedEntity.id
+})
+
 window.addEventListener("click", event => {
   const clickEvent = {
     entity: getEntityClicked({ entities, event })
